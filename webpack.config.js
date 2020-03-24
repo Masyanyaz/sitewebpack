@@ -38,7 +38,17 @@ const cssLoaders = extra => {
         reloadAll: true
       },
     },
-    'css-loader'
+    'css-loader',
+    {
+      loader: 'postcss-loader',
+      options: {
+        plugins: [
+          isProd ? require('cssnano') : () => {
+          },
+          require('autoprefixer')()
+        ]
+      }
+    }
   ]
 
   if (extra) {
@@ -88,6 +98,10 @@ const plugins = () => {
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, 'src/favicon.ico'),
+        to: path.resolve(__dirname, 'dist')
+      },
+      {
+        from: path.resolve(__dirname, 'src/robots.txt'),
         to: path.resolve(__dirname, 'dist')
       },
       {
