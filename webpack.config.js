@@ -52,9 +52,6 @@ const babelOptions = preset => {
   const opts = {
     presets: [
       '@babel/preset-env'
-    ],
-    plugins: [
-      '@babel/plugin-proposal-class-properties'
     ]
   }
 
@@ -92,16 +89,20 @@ const plugins = () => {
       {
         from: path.resolve(__dirname, 'src/favicon.ico'),
         to: path.resolve(__dirname, 'dist')
-      }
+      },
+      {
+        from: path.resolve(__dirname, 'src/assets'),
+        to: path.resolve(__dirname, 'dist/assets')
+      },
     ]),
     new MiniCssExtractPlugin({
-      filename: filename('css')
+      filename: `css/${filename('css')}`
     })
   ]
 
-  if (isProd) {
-    base.push(new BundleAnalyzerPlugin())
-  }
+  // if (isProd) {
+  //   base.push(new BundleAnalyzerPlugin())
+  // }
 
   return base
 }
@@ -110,17 +111,15 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
   entry: {
-    main: ['@babel/polyfill', './index.jsx'],
-    analytics: './analytics.ts'
+    main: ['regenerator-runtime/runtime', './index.js']
   },
   output: {
-    filename: filename('js'),
+    filename: `js/${filename('js')}`,
     path: path.resolve(__dirname, 'dist')
   },
   resolve: {
     extensions: ['.js', '.json', '.png'],
     alias: {
-      '@models': path.resolve(__dirname, 'src/models'),
       '@': path.resolve(__dirname, 'src'),
     }
   },
@@ -138,10 +137,6 @@ module.exports = {
         use: cssLoaders()
       },
       {
-        test: /\.less$/,
-        use: cssLoaders('less-loader')
-      },
-      {
         test: /\.s[ac]ss$/,
         use: cssLoaders('sass-loader')
       },
@@ -154,14 +149,6 @@ module.exports = {
         use: ['file-loader']
       },
       {
-        test: /\.xml$/,
-        use: ['xml-loader']
-      },
-      {
-        test: /\.csv$/,
-        use: ['csv-loader']
-      },
-      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: jsLoaders()
@@ -172,14 +159,6 @@ module.exports = {
         loader: {
           loader: 'babel-loader',
           options: babelOptions('@babel/preset-typescript')
-        }
-      },
-      {
-        test: /\.jsx$/,
-        exclude: /node_modules/,
-        loader: {
-          loader: 'babel-loader',
-          options: babelOptions('@babel/preset-react')
         }
       }
     ]
