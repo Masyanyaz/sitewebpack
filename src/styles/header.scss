@@ -1,23 +1,15 @@
-.header {
-  font-family: 'Montserrat', sans-serif;
-  display: flex;
-  justify-content: space-between;
+header {
   position: relative;
   box-shadow: 0 10px 10px 0 rgba(58, 63, 67, 0.12);
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .header__logo {
-  padding: 10px;
-}
-
-.header__logo-blue {
-  font-size: 25px;
-  color: #0089f7;
-  font-weight: bold;
-}
-
-.header__logo-black {
-  font-size: 24px;
+  padding: 10px 0;
 }
 
 .header__menu {
@@ -70,8 +62,9 @@
     top: 100%;
     flex-direction: column;
     width: 100%;
+    left: 0;
     align-items: center;
     background: #fff;
+    z-index: 9;
   }
-
 }

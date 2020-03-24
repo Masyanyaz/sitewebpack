@@ -6,40 +6,42 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" href="favicon.ico" type="image/ico">
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <title>Webpack</title>
 </head>
 <body>
-<div class="header">
-  <div class="header__logo">
-    <span class="header__logo-blue">Lo</span><span class="header__logo-black">gotype</span>
-  </div>
-  <div class="header__menu">
-    <a href="">О нас</a>
-    <a href="">Услуги</a>
-    <a href="">Портфолио</a>
-    <a href="">Отзывы</a>
-    <a href="">Контакты</a>
-  </div>
-  <div class="header__button">
-    Связаться с нами
-  </div>
-  <div class="header__burger">
-    <div class="header__burger-line"></div>
-    <div class="header__burger-line"></div>
-    <div class="header__burger-line"></div>
-  </div>
-  <div class="header__mobile-menu">
-    <a href="">О нас</a>
-    <a href="">Услуги</a>
-    <a href="">Портфолио</a>
-    <a href="">Отзывы</a>
-    <a href="">Контакты</a>
-    <div class="header__mobile-button">
+<header class="header">
+  <div class="wrapper">
+    <div class="header__logo logo">
+      <span class="logo-color">Lo</span><span>gotype</span>
+    </div>
+    <div class="header__menu">
+      <a href="#">О нас</a>
+      <a href="#">Услуги</a>
+      <a href="#">Портфолио</a>
+      <a href="#">Отзывы</a>
+      <a href="#">Контакты</a>
+    </div>
+    <div class="header__button">
       Связаться с нами
     </div>
+    <div class="header__burger">
+      <div class="header__burger-line"></div>
+      <div class="header__burger-line"></div>
+      <div class="header__burger-line"></div>
+    </div>
+    <div class="header__mobile-menu">
+      <a href="">О нас</a>
+      <a href="">Услуги</a>
+      <a href="">Портфолио</a>
+      <a href="">Отзывы</a>
+      <a href="">Контакты</a>
+      <div class="header__mobile-button">
+        Связаться с нами
+      </div>
+    </div>
   </div>
-</div>
+</header>
+
 <section class="content">
   <div class="wrapper">
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid animi culpa eos excepturi itaque libero magni maxime minus omnis porro, possimus quam, quod, rem
@@ -55,31 +57,25 @@
   <section class="main">
     <div class="wrapper">
       <div class="logo">
-        Logotype
+        <span class="logo-color">Lo</span><span>gotype</span>
       </div>
       <div class="middle">
         <h5 class="title">Learn more about Betheme</h5>
         <ul class="menu">
           <li>
-            <a href="#">Introduction</a>
+            <a href="#">О нас</a>
           </li>
           <li>
-            <a href="#">Pre-built websites</a>
+            <a href="#">Услуги</a>
           </li>
           <li>
-            <a href="#">Headers</a>
+            <a href="#">Портфолио</a>
           </li>
           <li>
-            <a href="#">Pages creation</a>
+            <a href="#">Отзывы</a>
           </li>
           <li>
-            <a href="#">Sliders</a>
-          </li>
-          <li>
-            <a href="#">Muffin Options</a>
-          </li>
-          <li>
-            <a href="#">Muffin Builder</a>
+            <a href="#">Контакты</a>
           </li>
         </ul>
       </div>
@@ -110,7 +106,7 @@
           Copyright © 2020 Muffin Group. All rights reserved
         </p>
       </div>
-      <a class="go-to-top" href="">
+      <a class="go-to-top" onclick="MA.scroll('body')">
         <img src="assets/arrow.svg" alt="">
       </a>
     </div>
