@@ -15,7 +15,7 @@
     "javascript",
     "webpack"
   ],
-  "author": "Vladilen <v@mail.ru>",
+  "author": "Masya",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.8.3",
