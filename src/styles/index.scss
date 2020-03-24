@@ -1,3 +1,16 @@
-img {
-  width: 200px;
+.content {
+  margin: 50px auto;
+
+  .wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+  }
 }
+
+
+
+
+
+@import "header";
+@import "footer";

@@ -1,0 +1,77 @@
+.header {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  box-shadow: 0 10px 10px 0 rgba(58, 63, 67, 0.12);
+}
+
+.header__logo {
+  padding: 10px;
+}
+
+.header__logo-blue {
+  font-size: 25px;
+  color: #0089f7;
+  font-weight: bold;
+}
+
+.header__logo-black {
+  font-size: 24px;
+}
+
+.header__menu {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__menu a, .header__mobile-menu a {
+  padding: 20px 20px;
+  text-decoration: none;
+  color: #000;
+}
+
+.header__menu a:hover {
+  text-decoration: underline;
+}
+
+.header__button, .header__mobile-button {
+  background-color: #80b541;
+  padding: 20px 30px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.header__mobile-menu, .header__burger {
+  display: none;
+}
+
+@media (max-width: 820px) {
+  .header__menu, .header__button {
+    display: none;
+  }
+
+  .header__burger {
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    margin-right: 20px;
+  }
+
+  .header__burger-line {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+  }
+
+  .header__mobile-menu.mb-active {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    background: #fff;
+  }
+
+}
