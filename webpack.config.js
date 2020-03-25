@@ -1,21 +1,22 @@
-const path = require('path')
-const HTMLWebpackPlugin = require('html-webpack-plugin')
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetWebpackPlugin = require('optimize-css-assets-webpack-plugin')
-const TerserWebpackPlugin = require('terser-webpack-plugin')
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
+const path = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
+const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
+const webpack = require('webpack');
 
-const isDev = process.env.NODE_ENV === 'development'
-const isProd = !isDev
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = !isDev;
 
 const optimization = () => {
   const config = {
     splitChunks: {
       chunks: 'all'
     }
-  }
+  };
 
   if (isProd) {
     config.minimizer = [
@@ -25,9 +26,9 @@ const optimization = () => {
   }
 
   return config
-}
+};
 
-const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
+const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`;
 
 const cssLoaders = extra => {
   const loaders = [
@@ -45,46 +46,47 @@ const cssLoaders = extra => {
         plugins: [
           isProd ? require('cssnano') : () => {
           },
-          require('autoprefixer')()
+          require('autoprefixer')({grid: 'autoplace'})
         ]
       }
-    }
-  ]
+    },
+    'group-css-media-queries-loader'
+  ];
 
   if (extra) {
     loaders.push(extra)
   }
 
   return loaders
-}
+};
 
 const babelOptions = preset => {
   const opts = {
     presets: [
       '@babel/preset-env'
     ]
-  }
+  };
 
   if (preset) {
     opts.presets.push(preset)
   }
 
   return opts
-}
+};
 
 
 const jsLoaders = () => {
   const loaders = [{
     loader: 'babel-loader',
     options: babelOptions()
-  }]
+  }];
 
   if (isDev) {
     loaders.push('eslint-loader')
   }
 
   return loaders
-}
+};
 
 const plugins = () => {
   const base = [
@@ -111,15 +113,19 @@ const plugins = () => {
     ]),
     new MiniCssExtractPlugin({
       filename: `css/${filename('css')}`
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
     })
-  ]
+  ];
 
   // if (isProd) {
   //   base.push(new BundleAnalyzerPlugin())
   // }
 
   return base
-}
+};
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -177,4 +183,4 @@ module.exports = {
       }
     ]
   }
-}
+};

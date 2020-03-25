@@ -1,0 +1,51 @@
+.blocks {
+  display: flex;
+  flex-direction: column;
+
+  .block-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.reverse {
+      flex-direction: row-reverse;
+
+      .image {
+        margin-right: -5%;
+        margin-left: 5%;
+      }
+    }
+
+    .image {
+      width: 300px;
+      margin-right: 5%;
+      margin-left: -5%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .desc {
+      width: 300px;
+      text-align: center;
+
+      p {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .blocks {
+    .block-item, .block-item.reverse  {
+      flex-direction: column;
+      margin-bottom: 20px;
+
+      .image {
+        margin: 0;
+      }
+    }
+  }
+}
