@@ -1,0 +1,41 @@
+.services {
+
+  .heading {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 70px;
+  }
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .item {
+      display: flex;
+      width: 100%;
+      max-width: 46%;
+      margin: 0 2% 40px;
+
+      .image {
+        margin-right: 4%;
+      }
+
+      .desc {
+
+        .title {
+          font-size: 20px;
+          margin-bottom: 15px;
+          font-weight: 600;
+          color: #03040E;
+        }
+
+        p {
+          font-size: 15px;
+          margin-bottom: 15px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}
